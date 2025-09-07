@@ -7,8 +7,13 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0
-    player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
     
+    
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable,drawable)
+    
+    player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
     
     while(True):
         #quit button in gui screen
@@ -19,9 +24,12 @@ def main():
         #fills the screen with black color
         screen.fill((0,0,0))
         
-        #renders player triangle
-        player.update(dt)
-        player.draw(screen)
+        #renders updatables
+        updatable.update(dt)
+        
+        #render drawables
+        for drawab in drawable:
+            drawab.draw(screen)
         
         #refreshes screen
         pygame.display.flip()
