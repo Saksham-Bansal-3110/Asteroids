@@ -1,17 +1,28 @@
 import pygame
 from constants import *
+from player import Player
 
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
     clock = pygame.time.Clock()
     dt = 0
+    player = Player(SCREEN_WIDTH/2,SCREEN_HEIGHT/2)
+    
     
     while(True):
+        #quit button in gui screen
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        
+        #fills the screen with black color
         screen.fill((0,0,0))
+        
+        #renders player triangle
+        player.draw(screen)
+        
+        #refreshes screen
         pygame.display.flip()
         
         #limit the framerate to 60 fps
