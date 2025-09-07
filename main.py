@@ -20,6 +20,7 @@ def main():
         screen.fill((0,0,0))
         
         #renders player triangle
+        player.update(dt)
         player.draw(screen)
         
         #refreshes screen
