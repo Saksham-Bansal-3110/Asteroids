@@ -48,7 +48,7 @@ def main():
             for bullet in shots:
                 if asteriod.collision(bullet):
                     bullet.kill()
-                    asteriod.kill()
+                    asteriod.split()
         
         #render drawables
         for drawab in drawable:
